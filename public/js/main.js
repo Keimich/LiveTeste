@@ -24,7 +24,7 @@ function enviar() {
         };
         $.ajax(settings).done(function (res) {
             all_info.api_info = res
-            all_info.cod_nome = res.split('#')[1]
+            all_info.cod_nome =  res.split('#')[1]
             all_info.cod_sobrenome = res.split('#')[3]
             all_info.cod_email = res.split('#')[5]
             var settings = {

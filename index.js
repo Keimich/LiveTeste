@@ -24,6 +24,6 @@ app.get('/', function (req, res) {
 });
 
 app.post('/dados', function (req, res) {
-    query(req.body)
+    query.start(req.body)
     res.send('OK')
 });
