@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var expressLayouts = require('express-ejs-layouts');
-var query = require('./db')
+var db = require('./db')
 var app = express();
 var port = 8083;
 
@@ -23,7 +23,18 @@ app.get('/', function (req, res) {
     //res.send('GET')
 });
 
+app.get('/infos', function (req, res) {
+    res.render('pages/infos')
+    //res.send('GET')
+});
+
 app.post('/dados', function (req, res) {
-    query.start(req.body)
-    res.send('OK')
+    db.query.p(req.body, (cb) => {
+        if (cb) {
+            console.log(cb)
+            res.redirect('/infos', {
+                infos: cb
+            })
+        }
+    })
 });

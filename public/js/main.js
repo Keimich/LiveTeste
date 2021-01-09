@@ -38,9 +38,6 @@ function enviar() {
             };
     
             $.ajax(settings).done(function (res) {
-                if(res = 'OK'){
-                    $('.btn').removeClass('disabled')
-                }
                 console.log(res);
             });
         });
