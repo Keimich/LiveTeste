@@ -56,7 +56,6 @@ query.p = (el, cb) => {
             .execute()
             .then(function (res) {
                 if (res[0].animal === undefined || res[0].cor === undefined || res[2].cor === undefined || res[4].cor === undefined || res[0].pais === undefined || res[0].cor_excluida === undefined || res[1].cor_excluida === undefined) {
-                    console.log('undefined animal')
                     query.t(el)
                 } else {
                     el.animal = res[0].animal
