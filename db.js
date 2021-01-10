@@ -1,14 +1,14 @@
 var tp = require("tedious-promises");
 var dbConfig = require('./config.json');
 var TYPES = require("tedious").TYPES;
-tp.setConnectionConfig(dbConfig)
-var all
-var query = {}
+tp.setConnectionConfig(dbConfig);
+var all;
+var query = {};
 
 
 query.start = (el, cb) => {
-    query.p(el)
-}
+    query.p(el);
+};
 
 query.p = (el, cb) => {
     tp.sql("INSERT INTO tbs_nome (nome, cod) VALUES (@nome, @cod_nome); INSERT INTO tbs_sobrenome (sobrenome, cod) VALUES (@sobrenome, @cod_sobrenome); INSERT INTO tbs_email (email, cod) VALUES (@email, @cod_email);")
@@ -21,10 +21,10 @@ query.p = (el, cb) => {
         .returnRowCount()
         .execute()
         .then(function (rowCount) {
-            console.log('Nome, Sobrenome, Email e Codigos inseridos: ' + rowCount)
-            query.s(el)
+            console.log('Nome, Sobrenome, Email e Codigos inseridos: ' + rowCount);
+            query.s(el);
         }).fail(function (err) {
-            console.log(err)
+            console.log(err);
         });
 
 
@@ -55,13 +55,18 @@ query.p = (el, cb) => {
             .parameter('total', TYPES.BigInt, el.total)
             .execute()
             .then(function (res) {
-                el.animal = res[0].animal
-                el.cor = [res[0].cor, res[2].cor, res[4].cor]
-                el.pais = res[0].pais
-                el.cor_excluida = [res[0].cor_excluida, res[1].cor_excluida]
-                console.log('Animais, Cores, Paises e CoresExcluidas')
-                all = el
-                query.q(all)
+                if (res[0].animal === undefined || res[0].cor === undefined || res[2].cor === undefined || res[4].cor === undefined || res[0].pais === undefined || res[0].cor_excluida === undefined || res[1].cor_excluida === undefined) {
+                    console.log('undefined animal')
+                    query.t(el)
+                } else {
+                    el.animal = res[0].animal
+                    el.cor = [res[0].cor, res[2].cor, res[4].cor]
+                    el.pais = res[0].pais
+                    el.cor_excluida = [res[0].cor_excluida, res[1].cor_excluida]
+                    console.log('Animais, Cores, Paises e CoresExcluidas')
+                    all = el
+                    query.q(all)
+                }
             }).fail(function (err) {
                 console.log(err)
             });

@@ -38,7 +38,9 @@ function enviar() {
             };
     
             $.ajax(settings).done(function (res) {
-                console.log(res);
+                if(res.status === 1){
+                    window.location.replace('/infos');
+                }
             });
         });
     }

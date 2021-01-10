@@ -1,4 +1,59 @@
-<%- contentFor('conteudo') %>
+<!DOCTYPE html>
+<html>
 
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Informações</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/materialize.css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src='./js/materialize.js'></script>
+    <script src='./js/jquery-3.5.1.js'></script>
+</head>
 
-SEI LA MALUCO
+<body class="grey lighten-5">
+    <div class="container">
+        <div class="row" id="Informacoes">
+            <div class="col s12">
+                <table style="margin-top: 20%;">
+                    <thead>
+                        <th>Informações: </th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nome: <%= infos.nome%></td>
+                            <td>Sobrenome: <%= infos.sobrenome%></td>
+                            <td>Nome completo: <%= infos.nome%> <%= infos.sobrenome%></td>
+                            <td>Email: <%= infos.email%></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Retorno API: <%= infos.api_info%></td>
+                            <td>Codigo nome: <%= infos.cod_nome%></td>
+                            <td>Codigo sobrenome: <%= infos.cod_sobrenome%></td>
+                            <td>Codigo email: <%= infos.cod_email%></td>
+                        </tr>
+                        <tr>
+                            <td>Soma nome: <%= infos.somas.soma_nome%></td>
+                            <td>Soma sobrenome: <%= infos.somas.soma_sobrenome%></td>
+                            <td>Soma email: <%= infos.somas.soma_email%></td>
+                            <td>Total: <%= infos.total%></td>
+                        </tr>
+                        <tr>
+                            <td>Animal: <%= infos.animal%></td>
+                            <td>Pais: <%= infos.pais%></td>
+                            <td>Cores: <%= infos.cor[0]%>, <%= infos.cor[1]%>, <%= infos.cor[2]%></td>
+                            <td>Cores excluidas: <%= infos.cor_excluida[0]%>, <%= infos.cor_excluida[1]%></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
